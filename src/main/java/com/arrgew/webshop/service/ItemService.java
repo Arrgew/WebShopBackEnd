@@ -5,35 +5,35 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.arrgew.webshop.model.Item;
-import com.arrgew.webshop.repo.ItemRepo;
+import com.arrgew.webshop.repository.ItemRepository;
 
 @Service
 @Transactional
 public class ItemService {
-	private final ItemRepo itemRepo;
+	private final ItemRepository itemRepository;
 	
 	@Autowired
-	public ItemService(ItemRepo itemRepo) {
-		this.itemRepo=itemRepo;
+	public ItemService(ItemRepository itemRepository) {
+		this.itemRepository =itemRepository;
 	}
 	
 	public Item addItem(Item newItem) {
-		return itemRepo.save(newItem);
+		return itemRepository.save(newItem);
 	}
 	
 	public List<Item> findAllItems(){
-		return itemRepo.findAll();
+		return itemRepository.findAll();
 	}
 	
 	public Item findItemById(Long id) {
-		return itemRepo.findItemById(id).orElseThrow();
+		return itemRepository.findItemById(id).orElseThrow();
 	}
 	
 	public Item updateItemById(Item updatedItem) {
-		return itemRepo.save(updatedItem);
+		return itemRepository.save(updatedItem);
 	}
 	
 	public void deleteItemById(Long id) {
-		itemRepo.deleteItemById(id);
+		itemRepository.deleteItemById(id);
 	}
 }
