@@ -39,7 +39,7 @@ public class ItemController {
 		return new ResponseEntity<>(itemService.findItemById(id),HttpStatus.OK);
 	}
 	
-	@PutMapping("/update")
+	@PutMapping(path="/update")
     public ResponseEntity<Item> updateEmployee(@RequestBody Item updateItem) {
         return new ResponseEntity<>(itemService.updateItemById(updateItem), HttpStatus.OK);
     }
