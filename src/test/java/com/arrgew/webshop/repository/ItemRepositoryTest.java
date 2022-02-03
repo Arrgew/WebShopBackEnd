@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,7 +25,7 @@ class ItemRepositoryTest {
     @Test
     void itShouldFindItemById() {
         //give
-        Item item = new Item("testFindByIdItem","the description of the testFindByIdItem",652,"imgUrls place");
+        Item item = new Item("testFindByIdItem","the description of the testFindByIdItem",new BigDecimal(652),"imgUrls place",null);
         this.itemRepository.save(item);
         //when
         Optional<Item> itExists= this.itemRepository.findItemById(item.getId());
@@ -35,9 +36,9 @@ class ItemRepositoryTest {
     @Test
     void ItShouldDeleteItemByIdButNotOtherItems() {
         //give
-        Item item = new Item("testDeleteItem","the description of the testDeleteItem",15646,"imgUrls place");
+        Item item = new Item("testDeleteItem","the description of the testDeleteItem",new BigDecimal(15646),"imgUrls place",null);
         this.itemRepository.save(item);
-        Item item2 = new Item("testDeleteItem2","the description of the testDeleteItem2",15600,"imgUrls place2");
+        Item item2 = new Item("testDeleteItem2","the description of the testDeleteItem2",new BigDecimal(15600),"imgUrls place2",null);
         this.itemRepository.save(item2);
         //when
         this.itemRepository.deleteItemById(item.getId());
@@ -50,10 +51,10 @@ class ItemRepositoryTest {
     @Test
     void findAllItemsInDatabase(){
         //give
-        Item item = new Item("testFindAllItem","the description of the testItem",156,"imgUrls place");
-        Item item2 = new Item("testFindAllItem2","the description of the testItem",199,"imgUrls place");
-        Item item3 = new Item("testFindAllItem3","the description of the testItem",2226,"imgUrls place");
-        Item item4 = new Item("testFindAllItem4","the description of the testItem",9956,"imgUrls place");
+        Item item = new Item("testFindAllItem","the description of the testItem",new BigDecimal(156),"imgUrls place",null);
+        Item item2 = new Item("testFindAllItem2","the description of the testItem",new BigDecimal(199),"imgUrls place",null);
+        Item item3 = new Item("testFindAllItem3","the description of the testItem",new BigDecimal(2226),"imgUrls place",null);
+        Item item4 = new Item("testFindAllItem4","the description of the testItem",new BigDecimal(9956),"imgUrls place",null);
         this.itemRepository.saveAll(List.of(item,item2,item3,item4));
         //when
         List<Item> itemList =itemRepository.findAll();

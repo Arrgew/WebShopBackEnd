@@ -1,7 +1,10 @@
 package com.arrgew.webshop.service;
 
 import java.util.List;
+import java.util.Set;
 import javax.transaction.Transactional;
+
+import com.arrgew.webshop.model.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.arrgew.webshop.model.Item;
@@ -35,5 +38,9 @@ public class ItemService {
 	
 	public void deleteItemById(Long id) {
 		itemRepository.deleteItemById(id);
+	}
+
+	public void addTagById(Long id,String tag){
+
 	}
 }

@@ -12,6 +12,8 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.math.BigDecimal;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 
@@ -29,7 +31,7 @@ class ItemServiceTest {
     @Test
     void canAddItem() {
         //give
-        Item item = new Item("testAddItem","the description of the testAddItem",64252,"imgUrls place");
+        Item item = new Item("testAddItem","the description of the testAddItem",new BigDecimal(64252),"imgUrls place",null);
         //when
         itemService.addItem(item);
         //then
